@@ -12,13 +12,21 @@
 
     <!-- НАВИГАЦИЯ -->
     <nav class="mb-4 text-center">
+
         <a href="/" class="text-light">Главная</a> |
 
-        <a href="/train/" class="text-light">Все слова</a> |
+        <a href="/train/?mode=all"
+            class="{% if mode == 'all' %}text-primary{% else %}text-light{% endif %}">
+            Все слова
+        </a> |
 
-        <a href="/train/?mode=hard" class="text-danger">Сложные слова</a> |
+        <a href="/train/?mode=hard"
+            class="{% if mode == 'hard' %}text-danger{% else %}text-light{% endif %}">
+            Сложные слова
+        </a> |
 
         <a href="{% url 'reset' %}" class="text-warning">Сбросить прогресс</a>
+
     </nav>
 
     <!-- ЕСЛИ ЗАВЕРШЕНО -->

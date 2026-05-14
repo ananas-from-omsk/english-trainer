@@ -13,5 +13,3 @@ class Word(models.Model):
         return self.english
 
 
-from django.db import models
-

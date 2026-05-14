@@ -4,10 +4,13 @@ import random
 from django.db.models import F
 from django.db.models import F, FloatField, ExpressionWrapper
 from django.db.models.functions import Cast
+from .forms import WordForm
 
 def home(request):
     words = Word.objects.all()
-    return render(request, 'trainer/home.html', {'words': words})
+    return render(request, 'trainer/home.html', {
+        'words': words
+    })
 
 MAX_PROGRESS = 10
 
@@ -137,3 +140,16 @@ def stats(request):
     return render(request, "trainer/stats.html", {
         "data": data
     })
+
+def add_word(request):
+    if request.method == "POST":
+        form = WordForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    else:
+        form = WordForm()
+
+    return render(request, "trainer/add.html", {"form": form})
+
+from .forms import WordForm
