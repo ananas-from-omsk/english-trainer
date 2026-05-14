@@ -1,7 +1,11 @@
+"""Models for English trainer app"""
+
 from django.db import models
 
 
 class Word(models.Model):
+    """Word model for training system"""
+
     english = models.CharField(max_length=100)
     russian = models.CharField(max_length=100)
     example = models.TextField(blank=True)
@@ -10,6 +14,4 @@ class Word(models.Model):
     wrong_answers = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.english
-
-
+        return str(self.english)
